@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int generate_random_number(int n)
+{
+    srand(time(NULL));
+    return rand()%n;
+}
+int greater(char player,char computer)
+{
+    if((player=='s')&&(computer=='w'))
+    {
+        return 1;
+    }
+      else if((player=='w')&&(computer=='s'))
+    {
+        return 0;
+    }
+      if((player=='w')&&(computer=='g'))
+    {
+        return 1;
+    }
+     else if((player=='g')&&(computer=='w'))
+    {
+        return 0;
+    }
+       if((player=='s')&&(computer=='g'))
+    {
+        return 0;
+    }
+     else if((player=='g')&&(computer=='s'))
+    {
+        return 1;
+    }
+    if(player==computer);
+    return -1;
+}
+
+int main() {
+    
+   
+    int i,n,playerscore=0,computerscore=0,temp;
+  char playerchar,computerchar;
+  char dash[]={'s','w','g'};
+  printf("how many times you want to play this game=");
+  scanf("%d",&n);
+  printf("\nwelcome in the world of snake , water and gun\n");
+  printf("**snake stands for=s* **water stands for w* **gun stnds for g* **\n\n");
+  printf("\nenter 1 for snake,2 for water & 3 for gun \n");
+  for(i=0;i<n;i++)
+  {
+      printf("\nplayer 1 turn=");
+      scanf("%d",&temp);
+     playerchar=dash[temp-1];
+     printf("\nplayer choose=%c\n",playerchar);
+
+  
+   temp=generate_random_number(3)+1;
+   computerchar=dash[temp-1];
+   printf("computer choose=%c",computerchar);
+  if(greater(playerchar,computerchar)==1){
+  playerscore+=1;
+  printf("\nplayer won\n");
+      
+  }
+ else if(greater(playerchar,computerchar)==-1)
+  {
+      printf("\nits draw\n");
+      printf("\ntry again\n");
+  }
+  else
+  {
+      computerscore+=1;
+      printf("\ncomputer won\n");
+  }
+  printf("\nplayer score=%d\n",playerscore);
+  printf("\ncomputer score=%d\n",computerscore);
+}
+printf("\nfinal score of players is\n");
+  
+  printf("\nplayer score=%d\n",playerscore);
+  printf("\ncomputer score=%d\n",computerscore);
+if(computerscore>playerscore)
+{
+    printf("computer won this game");
+}
+else
+{
+    printf("player won this game");
+}
+    return 0;
+}
